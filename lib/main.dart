@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: HomeStateless(),
-      home: Home(name: 'Flutter 1 class'),
-      // home: const MyHomePage('Welcome to Flutter', 20),
+      // home: Home(name: 'Flutter 1 class'),
+      home: const MyMessageApp(),
     );
   }
 }
@@ -276,6 +276,115 @@ class _HomeState extends State<Home> {
             ),
             BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Chats'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'You'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyMessageApp extends StatefulWidget {
+  const MyMessageApp({super.key});
+
+  @override
+  State<MyMessageApp> createState() => _MyMessageAppState();
+}
+
+class _MyMessageAppState extends State<MyMessageApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          IconButton(
+            style: ButtonStyle(
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(10.2),
+                ),
+              ),
+              backgroundColor: WidgetStatePropertyAll(Colors.grey),
+            ),
+            focusColor: Colors.green,
+            highlightColor: Colors.red,
+            onPressed: () {},
+            icon: Icon(Icons.add, color: Colors.white),
+          ),
+
+          IconButton(
+            style: ButtonStyle(
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(10.2),
+                ),
+              ),
+              backgroundColor: WidgetStatePropertyAll(
+                const Color.fromARGB(255, 194, 210, 245),
+              ),
+            ),
+            focusColor: Colors.green,
+            highlightColor: Colors.red,
+            onPressed: () {},
+            icon: SizedBox(
+              width: 90,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.message, color: Colors.white),
+                  Text(
+                    'Start chat',
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      appBar: AppBar(
+        actionsPadding: EdgeInsets.only(right: 16),
+        title: Text("Google Messages"),
+        actions: [
+          Icon(Icons.search),
+          SizedBox(width: 20),
+          CircleAvatar(
+            backgroundImage: AssetImage('lib/assets/images/img4.jpeg'),
+            radius: 20,
+          ),
+        ],
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            ListTile(
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Get 2.5GB GUARANTEED + up to \n 7.5GB BONUS! That's up to 10GB ...",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(17),
+                      color: const Color.fromARGB(255, 23, 85, 136),
+                    ),
+                    child: Text('28', style: TextStyle(color: Colors.white)),
+                  ),
+                ],
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text('GloMagic'), Text('10:03 am')],
+              ),
+              leading: CircleAvatar(
+                backgroundColor: const Color.fromARGB(255, 231, 107, 148),
+                child: Icon(Icons.person, color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),
